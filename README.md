@@ -5,12 +5,12 @@ Aegir 3 Installation From Git With Ansible
 
 ```
 # git clone https://github.com/platypustheory/aegirinstall
-# cd aegirinstall
+# cd aegirinstall/aegir3
 ```
 
-2. Edit aegir3/aegir3.yml and fill in `mysql_root_password` and `aegir_frontend_url` variables. Optionally, also edit any other variables (`aegir_admin_email`, and so on) to taste.
+2. Edit aegir3.yml and fill in `mysql_root_password` and `aegir_frontend_url` variables. Optionally, also edit any other variables (`aegir_admin_email`, and so on) to taste.
 
-3. From the aegirinstall directory:
+3. Download dependencies and install Aegir 3:
 
 ```
 # ./aegir3up.sh 
