@@ -5,7 +5,8 @@
   # Supply values for mysql_root_password and aegir_ssh_pub_key.
 
   vars:
-    mysql_root_password: {{ mysql_root_password }} 
+    mysql_root_password: "{{ mysql_root_password }}"
+    mysql_root_password_update: True
     nginx_manage_config: False
     nginx_remove_default_vhost: True
     php_cli_memory_limit: "2048M"
@@ -14,10 +15,12 @@
     php_set_cli_memory_limit: True
     php_version: "8.1"
     aegir_db_service_type: mysql
-    aegir_db_pass: {{ mysql_root_password }}
+    aegir_db_pass: "{{ mysql_root_password }}"
     aegir_http_service_type: nginx
-    aegir_ssh_pub_key: {{ aegir_ssh_pub_key }}
+    aegir_ssh_pub_key: "{{ aegir_ssh_pub_key }}"
 
   roles:
-    - consensus.php-versions
-    - consensus.aegir-minion
+    - role: consensus.php-versions
+      become: yes
+    - role: consensus.aegir-minion
+      become: yes
