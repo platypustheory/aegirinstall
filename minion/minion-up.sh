@@ -1,7 +1,7 @@
 #!/bin/bash -v
-apt-get update -yqq
-apt-get install -yqq git make unzip
-apt-get install --assume-yes ansible
+sudo apt-get update -yqq
+sudo apt-get install -yqq git make unzip
+sudo apt-get install --assume-yes ansible
 mkdir -p roles
 git clone --recursive https://gitlab.com/consensus.enterprises/ansible-roles/ansible-role-aegir-minion roles/consensus.aegir-minion
 git clone --recursive https://gitlab.com/consensus.enterprises/ansible-roles/ansible-role-mysql roles/consensus.mysql
