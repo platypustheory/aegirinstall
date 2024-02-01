@@ -9,4 +9,4 @@ git clone https://gitlab.com/consensus.enterprises/ansible-roles/ansible-role-ng
 git clone https://github.com/consensus-enterprises/ansible-role-php.git roles/consensus.php
 git clone https://github.com/consensus-enterprises/ansible-role-php-versions.git roles/consensus.php-versions
 ansible-galaxy collection install community.crypto community.general community.mysql
-ansible-playbook minion.yml --connection=local -i inventory
+echo "ansible-playbook minion.yml --connection=local -i inventory"
