@@ -1,0 +1,37 @@
+---
+- name: "Set up roles for Aegir minion configuration via Ansible."
+  hosts: all
+
+  tasks:
+
+  - name: Ensure roles dir exists.
+    file:
+      path: roles
+      state: directory
+
+  - name: Ensure Aegir minion role is checked out.
+    git:
+      repo: "https://gitlab.com/consensus.enterprises/ansible-roles/ansible-role-aegir-minion.git" 
+      dest: "roles/consensus.aegir-minion"
+
+  - name: Ensure Mysql role is checked out.
+    git:
+      repo: "https://github.com/consensus-enterprises/ansible-role-mysql.git"
+      dest: "roles/consensus.mysql"
+
+
+  - name: Ensure Nginx role is checked out.
+    git:
+      repo: "https://gitlab.com/consensus.enterprises/ansible-roles/ansible-role-nginx.git"
+      dest: "roles/consensus.nginx"
+
+  - name: Ensure PHP role is checked out.
+    git:
+      repo: "https://github.com/consensus-enterprises/ansible-role-php.git"
+      dest: "roles/consensus.php"
+
+  - name: Ensure PHP versions role is checked out.
+    git:
+      repo: "https://github.com/consensus-enterprises/ansible-role-php-versions.git"
+      dest: "roles/consensus.php-versions"
+

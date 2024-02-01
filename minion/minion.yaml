@@ -2,11 +2,10 @@
 - name: "Aegir minion server install."
   hosts: all
 
-  # Supply values for mysql_root_password and aegir_ssh_pub_key.
-
   vars:
-    mysql_root_password: "{{ mysql_root_password }}"
-    mysql_root_password_update: True
+    # Default to generating a random pw for root by not supplying one.
+    # Or, uncomment and fill in the following line:
+    #mysql_root_password: "Fill in mysql root password if you want to supply one"
     nginx_manage_config: False
     nginx_remove_default_vhost: True
     php_cli_memory_limit: "2048M"
@@ -15,9 +14,9 @@
     php_set_cli_memory_limit: True
     php_version: "8.1"
     aegir_db_service_type: mysql
-    aegir_db_pass: "{{ mysql_root_password }}"
+    aegir_db_pass: "Fill in db password for aegir_root"
     aegir_http_service_type: nginx
-    aegir_ssh_pub_key: "{{ aegir_ssh_pub_key }}"
+    aegir_ssh_pub_key: "Fill in Aegir server SSH pub key"
 
   roles:
     - role: consensus.php-versions
