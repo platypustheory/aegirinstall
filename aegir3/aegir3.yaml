@@ -5,40 +5,50 @@
   # Supply values for mysql_root_password and aegir_frontend_url.
 
   vars:
-    # Dependencies
+    ### Dependency roles
     nginx_manage_config: False
     nginx_remove_default_vhost: True
     php_cli_memory_limit: "2048M"
     php_enable_php_fpm: True
     php_enable_webserver: False
     php_set_cli_memory_limit: True
-    php_version: "7.4"
+    #php_version: "7.4"
+    php_version: "8.2"
     # TODO: dan come back and fix consensus.php so this isn't necessary:
-    php_default_version_debian: "7.4"
-    mysql_root_password: {{ mysql_root_password }}
-    # This role
-    aegir_db_password: {{ mysql_root_password }}
+    php_default_version_debian: "8.2"
+    # Default to a random root password by not providing one.
+    # mysql_root_password: {{ mysql_root_password }}
+
+    ### This role
+    aegir_db_password: "{{ mysql_root_password }}"
+    aegir_frontend_url: aegir0
     aegir_http_service_type: nginx
     aegir_install_method: git
-    aegir_frontend_url: {{ aegir_frontend_url }}
     aegir_drush_version: "8.4.12"
     aegir_skynet_enable: True
-    aegir_admin_email: "do-not-reply@aegir3"
+    aegir_admin_email: "do-not-reply@aegir0"
     aegir_generate_makefile: True
 
   roles:
-    - consensus.mysql
-    - geerlingguy.nginx
-    - consensus.php-versions
-    - consensus.php
-    - consensus.aegir
+    - role: consensus.mysql
+      become: True
+    - role: consensus.nginx
+      become: True
+    - role: consensus.php-versions
+      become: True
+    - role: consensus.php
+      become: True
+    - role: geerlingguy.composer
+      become: True
+    - role: consensus.aegir
+      become: True
 
   tasks:
 
   - name: Check that Aegir front-end is installed and generate login link.
     shell: "drush @hm status && drush @hm uli"
     changed_when: False
-    become: yes
+    become: True
     become_user: "aegir"
     register: uli
 
