@@ -12,10 +12,9 @@
     php_enable_php_fpm: True
     php_enable_webserver: False
     php_set_cli_memory_limit: True
-    #php_version: "7.4"
-    php_version: "8.2"
+    php_version: "8.1"
     # TODO: dan come back and fix consensus.php so this isn't necessary:
-    php_default_version_debian: "8.2"
+    php_default_version_debian: "8.1"
     # Default to a random root password by not providing one.
     # mysql_root_password: {{ mysql_root_password }}
 
