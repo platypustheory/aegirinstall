@@ -13,10 +13,9 @@
     php_enable_webserver: False
     php_set_cli_memory_limit: True
     php_version: "8.1"
-    # TODO: dan come back and fix consensus.php so this isn't necessary:
+    # TODO: fix consensus.php so this isn't necessary:
     php_default_version_debian: "8.1"
-    # Default to a random root password by not providing one.
-    # mysql_root_password: {{ mysql_root_password }}
+    mysql_root_password: {{ mysql_root_password }}
 
     ### This role
     aegir_db_password: "{{ mysql_root_password }}"
