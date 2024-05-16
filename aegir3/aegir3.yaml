@@ -36,7 +36,7 @@
 
     # Use Consensus' fork of Provision, with D10 support files patched in from BOA, and fixed:
     aegir_provision_repo: https://gitlab.com/consensus.enterprises/aegir/provision
-    aegir_provision_version: 'd10-install-script-correct-config-var'
+    aegir_provision_version: 'd10-update-nginx-config'
     aegir_provision_update: True
 
   roles:
