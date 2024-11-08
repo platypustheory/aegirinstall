@@ -1,7 +1,14 @@
 ---
+roles:
+  # Install from Ansible Galaxy.
+  - name: geerlingguy.composer
+  - name: geerlingguy.mysql
+  - name: geerlingguy.nginx
+  - name: geerlingguy.php
+  - name: geerlingguy.php-versions
+
 collections:
-  - name: community.crypto
+  - name: ansible.posix
   - name: community.general
   - name: community.mysql
-roles:
-  - name: geerlingguy.composer
+

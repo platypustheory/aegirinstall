@@ -13,13 +13,11 @@
     php_enable_webserver: False
     php_set_cli_memory_limit: True
     php_version: "8.1"
-    # TODO: fix consensus.php so this isn't necessary:
-    php_default_version_debian: "8.1"
-    mysql_root_password: {{ mysql_root_password }}
+    mysql_root_password: "not_a_secure_mysql_password_please_change"
 
     ### This role
     aegir_db_password: "{{ mysql_root_password }}"
-    aegir_frontend_url: "example.com" # change as desired
+    aegir_frontend_url: "change-this-url.com"
     aegir_http_service_type: nginx
     aegir_install_method: git
     aegir_skynet_enable: True
@@ -39,14 +37,28 @@
     aegir_provision_version: '3445832-host-drupal-10-on-aegir-3'
     aegir_provision_update: True
 
+  pre_tasks:
+
+  - name: 'Check mysql_root_password has been set.'
+    assert:
+      that:
+        - mysql_root_password != "not_a_secure_mysql_password_please_change"
+      fail_msg: 'Please update the mysql_root_password variable before running this playbook.'
+
+  - name: 'Check aegir_frontend_url has been set.'
+    assert:
+      that:
+        - aegir_frontend_url != "change-this-url.com"
+      fail_msg: 'Please update the aegir_frontend_url variable before running this playbook.'
+
   roles:
-    - role: consensus.mysql
+    - role: geerlingguy.mysql
       become: True
-    - role: consensus.nginx
+    - role: geerlingguy.nginx
       become: True
-    - role: consensus.php-versions
+    - role: geerlingguy.php-versions
       become: True
-    - role: consensus.php
+    - role: geerlingguy.php
       become: True
     - role: geerlingguy.composer
       become: True
@@ -63,3 +75,4 @@
     register: uli
 
   - debug: msg="{{ uli.stdout_lines }}"
+
