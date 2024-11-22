@@ -62,7 +62,7 @@
       become: True
     - role: geerlingguy.composer
       become: True
-    - role: consensus.aegir
+    - role: consensus.aegir.aegir
       become: True
 
   tasks:
