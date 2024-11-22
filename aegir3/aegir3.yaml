@@ -13,6 +13,8 @@
     php_enable_webserver: False
     php_set_cli_memory_limit: True
     php_version: "8.1"
+    # Annoyingly, we have to set this too, or else we end up with the default for our OS:
+    php_default_version_debian: "8.1"
     mysql_root_password: "not_a_secure_mysql_password_please_change"
 
     ### This role
