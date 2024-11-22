@@ -12,5 +12,5 @@ collections:
   - name: community.general
   - name: community.mysql
   - name: consensus.aegir
-    version: 1.0.2
+    version: 1.0.1
 
