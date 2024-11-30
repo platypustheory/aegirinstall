@@ -1,7 +1,7 @@
 Aegir 3 Installation From Git With Ansible
 ==========================================
 
-1. On a newly-provisioned Ubuntu 22.04 VM, as root:
+1. On a newly-provisioned Ubuntu 22.04 VM, as a priv user:
 
 ```
 # git clone https://github.com/platypustheory/aegirinstall
