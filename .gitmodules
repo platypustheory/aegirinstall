@@ -1,0 +1,3 @@
+[submodule "aegir3"]
+	path = aegir3
+	url = https://gitlab.com/consensus.enterprises/aegir/aegir3install
