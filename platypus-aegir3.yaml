@@ -1,17 +1,14 @@
 ---
-- name: "Platypus Aegir 3 build from source."
-  hosts: all
+# Supply values for mysql_root_password and aegir_frontend_url.
+- name: "Run Consensus Aegir 3 playbook with our vars"
+  ansible.builtin.import_playbook: aegir3/aegir3.yaml
+  vars:
+    mysql_root_password: "not_a_secure_mysql_password_please_change"
+    aegir_frontend_url: "change-this-url.com"
+    aegir_admin_email: "do-not-reply@example.com"
 
-  # Supply values for mysql_root_password and aegir_frontend_url.
-
-  - name: Run Consensus Aegir 3 playbook with our vars
-    ansible.builtin.import_playbook: otherplays.yml
-    vars:
-      mysql_root_password: "not_a_secure_mysql_password_please_change"
-      aegir_frontend_url: "change-this-url.com"
-  
-      # Use custom hosting_https with support for Nginx 1.25+:
-      aegir_custom_module_repos:
-        hosting_https: "https://github.com/platypustheory/hosting_https"
-      aegir_custom_module_versions: 
-        hosting_https: "1-support-nginx-1_26"
+    # Use custom hosting_https with support for Nginx 1.25+:
+    aegir_custom_module_repos:
+      hosting_https: "https://github.com/platypustheory/hosting_https"
+    aegir_custom_module_versions: 
+      hosting_https: "1-support-nginx-1_26"
