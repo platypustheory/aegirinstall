@@ -12,3 +12,10 @@
       hosting_https: "https://github.com/platypustheory/hosting_https"
     aegir_custom_module_versions: 
       hosting_https: "1-support-nginx-1_26"
+
+    # Platypus-specific PHP configs and packages:
+    php_use_managed_ini: "True"
+    php_expose_php: "Off"
+    php_packages_extra:
+      - php{{ php_default_version_debian }}-bcmath
+      - php{{ php_default_version_debian }}-soap
