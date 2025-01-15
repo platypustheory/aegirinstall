@@ -10,7 +10,7 @@
     # Use custom hosting_https with support for Nginx 1.25+:
     aegir_custom_module_repos:
       hosting_https: "https://github.com/platypustheory/hosting_https"
-    aegir_custom_module_versions: 
+    aegir_custom_module_versions:
       hosting_https: "1-support-nginx-1_26"
 
     # Platypus-specific PHP configs and packages:
@@ -19,3 +19,13 @@
     php_packages_extra:
       - php{{ php_default_version_debian }}-bcmath
       - php{{ php_default_version_debian }}-soap
+
+# TODO: This ensures hostmaster verify works correctly.
+# TODO: Solve this within the Aegir role.
+- name: Restart Nginx after Aegir role
+  hosts: all
+  tasks:
+    - ansible.builtin.service:
+        name: nginx
+        state: restarted
+      become: True
